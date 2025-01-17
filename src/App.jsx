@@ -36,8 +36,23 @@ const App = () => {
   // ----------------------Save-----------------------
 
   const handleSave = () => {
-    if (!fname || !lname || !age) {
-      alert("plss fill all filled");
+    let error = "";
+    if (fname === "") {
+      error += "fname required , ";
+    }
+    if (lname === "") {
+      error += "lname required , ";
+    }
+    if (age <= 0) {
+      error += "age required ";
+    }
+    // if (!fname || !lname || !age) {
+    //   alert("plss fill all filled");
+    //   return;
+    // }
+
+    if (error !== "") {
+      alert(error);
       return;
     }
     // Data ki shallow copy banana:
@@ -57,6 +72,7 @@ const App = () => {
 
     setData(dt);
     handleClear();
+    alert("emp added successfully");
   };
   // ----------------------update-----------------------
 
@@ -87,7 +103,6 @@ const App = () => {
 
   const handleClear = () => {
     setIsUpdate(false);
-    setId(0);
     setFname("");
     setLname("");
     setAge("");
